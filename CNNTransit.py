@@ -92,7 +92,7 @@ class CNN(object):
 class TestCNNTransit(unittest.TestCase):
 
     def setUp(self):
-        self.cnn = CNNTransit("transit")
+        self.cnn = CNN("transit")
 
         def filter(text):
             print "filtering"
