@@ -7,7 +7,6 @@ This traverses the cnn transcripts.
 
 """
 
-from nltk import bigrams
 from dateutil.parser import *
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
@@ -17,7 +16,7 @@ from forkmap import *
 from multiprocessing import Pool
 
 
-class CNNTransit(object):
+class CNN(object):
     """
     CNNTransit traverses the cnn transcripts using the following logical order:
 
@@ -68,7 +67,6 @@ class CNNTransit(object):
 
     def collect(self, path=None, start=None, end=None):
         """Collects the transcripts. Dates are inclusive
-
         """
 
         start = parse(start)
@@ -97,7 +95,7 @@ class TestCNNTransit(unittest.TestCase):
         self.cnn = CNNTransit("transit")
 
         def filter(text):
-            print text[:3]
+            print "filtering"
             return True
 
         def finish():
