@@ -34,5 +34,5 @@ Example: counts the number of transcripts containing Barack Obama and Mitt Romne
     cnn.filter = filter
     cnn.finish = finish
     cnn.collect(path="/path/to/cnn/TRANSCRIPTS", 
-               start="2012-08-01", 
-               end="2012-11-01")
+               start="2000-08-01", 
+               end="2012-3-01")
