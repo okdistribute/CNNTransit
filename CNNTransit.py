@@ -22,14 +22,13 @@ class CNN(object):
 
     collect
     filter
-    write
     finish
 
     Example: Get transcripts containing Barack Obama and Mitt Romney
 
     names = ["Barack Obama", "Mitt Romney"]
     ds = CNNTransit("election2012")
-    counts = {}
+    counts = defaultdict(int)
 
     def filter(self, text):
         for bigram in bigrams(text):
@@ -37,8 +36,11 @@ class CNN(object):
                 counts[bigram] += 1
 
     def finish(self):
-        print counts
-
+        fp = open("out.csv", "wb")
+        for name, count in counts.items():
+            fp.write("%s, %s\n" % (name, count))
+        fp.close()
+    
     ds.filter = filter
     ds.finish = finish
     ds.collect(path="/path/to/cnn/TRANSCRIPTS", 
@@ -54,10 +56,10 @@ class CNN(object):
         pass
 
     def finish(self):
-        """what to do at the end"""
+        """What to do after all transcripts have been filtered"""
         pass
 
-    @parallelizable(15,perproc=4)
+    #@parallelizable(15,perproc=4)
     def do_filter(self, p):
         o = open(p)
         bs = BeautifulSoup(o)
@@ -66,7 +68,9 @@ class CNN(object):
         o.close()
 
     def collect(self, path=None, start=None, end=None):
-        """Collects the transcripts. Dates are inclusive
+        """Collects the transcripts. Dates are inclusive.
+        
+        Give this function a path, start, and end date and it will traverse each transcript file.
         """
 
         start = parse(start)
@@ -95,7 +99,7 @@ class TestCNNTransit(unittest.TestCase):
         self.cnn = CNN("transit")
 
         def filter(text):
-            print "filtering"
+            print "i've got a transcript!"
             return True
 
         def finish():
