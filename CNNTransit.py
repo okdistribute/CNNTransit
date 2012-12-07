@@ -29,7 +29,8 @@ class CNN(object):
     counts = defaultdict(int)
 
     def filter(self, text):
-        for bigram in bigrams(text):
+        tokens = text.lower().split()
+        for bigram in bigrams(tokens):
             if bigram in names:
                 counts[bigram] += 1
 
