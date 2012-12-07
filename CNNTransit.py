@@ -12,8 +12,6 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import os
 import unittest
-from forkmap import *
-from multiprocessing import Pool
 
 
 class CNN(object):
@@ -59,7 +57,6 @@ class CNN(object):
         """What to do after all transcripts have been filtered"""
         pass
 
-    #@parallelizable(15,perproc=4)
     def do_filter(self, p):
         o = open(p)
         bs = BeautifulSoup(o)
