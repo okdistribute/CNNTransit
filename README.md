@@ -19,7 +19,8 @@ Example: counts the number of transcripts containing Barack Obama and Mitt Romne
     counts = defaultdict(int)
 
     def filter(self, text):
-        for bigram in bigrams(text):
+        tokens = text.lower().split()
+        for bigram in bigrams(tokens):
             if bigram in names:
                 counts[bigram] += 1
 
