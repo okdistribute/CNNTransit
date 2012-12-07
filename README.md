@@ -10,7 +10,7 @@ Python 2+
 You can get these from pip or easy_install:
 
      BeautifulSoup4
-    dateutil
+     dateutil
     
 
 Usage
