@@ -5,13 +5,7 @@ Traverses the CNN transcripts archive which can be found at http://archive.org/d
 
 Prerequisites
 =============
-Python 2+
-
-You can get these from pip or easy_install:
-
-     BeautifulSoup4
-     dateutil
-    
+Python 2+ and BeautifulSoup4
 
 Usage
 =====
