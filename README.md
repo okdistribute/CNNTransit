@@ -15,19 +15,13 @@ You can get these from pip or easy_install:
 
 Usage
 =====
-CNNTransit traverses the cnn transcripts using the following logical order:
-
-    collect
-    filter
-    finish
-
 Example: counts the number of transcripts containing Barack Obama and Mitt Romney
 
     from collections import defaultdict
     from nltk import bigrams
+    from CNNTransit import CNN
     
     names = ["Barack Obama", "Mitt Romney"]
-    ds = CNNTransit("election2012")
     counts = defaultdict(int)
 
     def filter(self, text):
@@ -40,9 +34,11 @@ Example: counts the number of transcripts containing Barack Obama and Mitt Romne
         for name, count in counts.items():
             fp.write("%s, %s\n" % (name, count))
         fp.close()
-    
-    ds.filter = filter
-    ds.finish = finish
-    ds.collect(path="/path/to/cnn/TRANSCRIPTS", 
+        
+        
+    cnn = CNN("election2012")
+    cnn.filter = filter
+    cnn.finish = finish
+    cnn.collect(path="/path/to/cnn/TRANSCRIPTS", 
                start="2012-08-01", 
                end="2012-11-01")
