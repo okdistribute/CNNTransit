@@ -24,7 +24,7 @@ class CNN(object):
     filter
     finish
 
-    Example: Get transcripts containing Barack Obama and Mitt Romney
+    Example: counts the number of transcripts containing Barack Obama and Mitt Romney
 
     names = ["Barack Obama", "Mitt Romney"]
     ds = CNNTransit("election2012")
