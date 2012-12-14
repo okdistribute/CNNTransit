@@ -18,13 +18,13 @@ Example: counts the number of transcripts containing Barack Obama and Mitt Romne
     names = ["Barack Obama", "Mitt Romney"]
     counts = defaultdict(int)
 
-    def filter(self, text):
+    def filter(text):
         tokens = text.lower().split()
         for bigram in bigrams(tokens):
             if bigram in names:
                 counts[bigram] += 1
 
-    def finish(self):
+    def finish():
         fp = open("out.csv", "wb")
         for name, count in counts.items():
             fp.write("%s, %s\n" % (name, count))
