@@ -10,6 +10,7 @@ This traverses the cnn transcripts.
 from dateutil.parser import *
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
+import itertools
 import os
 import unittest
 
@@ -81,7 +82,9 @@ class CNN(object):
             current_path = os.path.join(path, datestr, "%02d" % cur.day)
             paths = os.listdir(current_path)
             paths = map(lambda p: os.path.join(current_path, p), paths)
-            programs.append([parse(datestr), paths])
+
+            ps = zip(itertools.repeat(cur, len(paths)), paths)
+            programs += ps
 
             cur += offset
 
