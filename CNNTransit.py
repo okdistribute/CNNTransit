@@ -81,7 +81,7 @@ class CNN(object):
             current_path = os.path.join(path, datestr, "%02d" % cur.day)
             paths = os.listdir(current_path)
             paths = map(lambda p: os.path.join(current_path, p), paths)
-            programs += [parse(datestr), paths]
+            programs.append([parse(datestr), paths])
 
             cur += offset
 
